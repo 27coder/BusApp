@@ -1,0 +1,685 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* School-inspired bright & friendly matte palette */
+  --bus-yellow: #f59e0b;
+  --bus-yellow-light: #fef3c7;
+  --bus-yellow-dark: #b45309;
+
+  --primary-navy: #1e3a8a;
+  --primary-navy-dark: #0f172a;
+
+  --school-blue: #2563eb;
+  --school-blue-soft: #dbeafe;
+
+  --safety-green: #10b981;
+  --safety-green-soft: #d1fae5;
+
+  --alert-red: #ef4444;
+  --alert-red-soft: #fee2e2;
+
+  --bg-cream: #f8fafc;
+  --card-white: #ffffff;
+  --card-border: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-sub: #475569;
+  --text-muted: #64748b;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea, optgroup {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.school-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* App Header */
+.app-navbar {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 30;
+  flex-shrink: 0;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.tift-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Nav Tabs */
+.nav-tab-group {
+  display: flex;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+}
+
+.nav-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nav-tab-btn:hover {
+  color: var(--text-dark);
+}
+
+.nav-tab-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Main Split View */
+.main-app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .main-app-body {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+}
+
+/* Sidebar panel */
+.sidebar-panel {
+  width: 440px;
+  min-width: 390px;
+  background-color: var(--card-white);
+  border-right: 2px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+@media (max-width: 900px) {
+  .sidebar-panel {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 2px solid var(--card-border);
+  }
+}
+
+.sidebar-header {
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border-bottom: 1.5px solid var(--card-border);
+}
+
+.sidebar-content {
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* Full page container for Admin portal view */
+.admin-full-page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.75rem 2.25rem;
+  background-color: #f8fafc;
+}
+
+/* Flat Matte Cards */
+.school-card {
+  background: var(--card-white);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.school-card.highlight {
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #d1fae5;
+}
+
+/* Matte Stat Boxes */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.stat-box {
+  background: var(--bg-cream);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+}
+
+.stat-box .label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.stat-box .value {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 0.2rem;
+  letter-spacing: -0.02em;
+}
+
+/* Form Elements */
+.select-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background-color: var(--bg-cream);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+}
+
+.select-input:focus {
+  border-color: var(--school-blue);
+  background-color: #ffffff;
+}
+
+.form-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+/* Flat Action Buttons */
+.btn-matte {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--card-border);
+  background-color: var(--card-white);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-matte:hover {
+  background-color: var(--bg-cream);
+}
+
+.btn-matte.primary {
+  background-color: var(--bus-yellow);
+  border-color: var(--bus-yellow-dark);
+  color: #78350f;
+}
+
+.btn-matte.primary:hover {
+  background-color: #f59e0b;
+}
+
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+  background: #ffffff;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-icon:hover:not(:disabled) {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.btn-icon.danger:hover:not(:disabled) {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+.btn-icon:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Stop Finder Preset Chips */
+.preset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.preset-chip:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+/* Stop Match Result Card */
+.match-result-card {
+  background: #ffffff;
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.match-result-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+
+.match-result-card.selected {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* Stop Sequence Item in Sidebar */
+.stop-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  position: relative;
+}
+
+.stop-bullet {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bg-cream);
+  border: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  flex-shrink: 0;
+}
+
+.stop-bullet.active {
+  background: var(--bus-yellow);
+  border-color: var(--bus-yellow-dark);
+  color: #78350f;
+}
+
+.stop-bullet.target {
+  background: #dc2626;
+  border-color: #991b1b;
+  color: #ffffff;
+  box-shadow: 0 0 0 3px #fee2e2;
+}
+
+.stop-bullet.passed {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #64748b;
+}
+
+/* Map area */
+.map-viewport {
+  flex: 1;
+  position: relative;
+  background-color: #f1f5f9;
+  height: 100%;
+}
+
+/* Map Overlays */
+.map-floating-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+.target-stop-badge {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+  display: flex;
+  align-items: center;
+}
+
+.map-legend-box {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Leaflet Custom Marker Pins */
+.custom-leaflet-pin {
+  width: 26px;
+  height: 26px;
+  background: #ffffff;
+  border: 3px solid #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0f172a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.custom-leaflet-pin.target-stop {
+  background: #dc2626;
+  border-color: #991b1b !important;
+  color: #ffffff;
+}
+
+.pin-pulse {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(220, 38, 38, 0.35);
+  animation: pulse-ring 1.8s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.custom-leaflet-bus {
+  width: 36px;
+  height: 36px;
+  background: #f59e0b;
+  border: 2.5px solid #78350f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.bus-icon-inner {
+  font-size: 18px;
+}
+
+/* Admin Portal Styles */
+.admin-route-card {
+  background: #ffffff;
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.admin-stop-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+}
+
+.stop-index-pill {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.add-stop-box {
+  background: #eff6ff;
+  border: 1.5px dashed #93c5fd;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.admin-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  animation: slide-up 0.25s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* SVG Topological Canvas */
+.svg-fallback-canvas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  position: relative;
+}
+
+.svg-watermark {
+  position: absolute;
+  top: 4.5rem;
+  left: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.spin {
+  animation: spin-anim 1s linear infinite;
+}
+
+@keyframes spin-anim {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Google Places Autocomplete Styling */
+.pac-container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  border-radius: 10px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+  z-index: 100000 !important;
+  margin-top: 4px !important;
+  background-color: #ffffff !important;
+  overflow: hidden !important;
+}
+
+.pac-item {
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+  color: #334155 !important;
+  cursor: pointer !important;
+  border-top: 1px solid #f1f5f9 !important;
+}
+
+.pac-item:hover {
+  background-color: #f8fafc !important;
+}
+
+.pac-item-selected,
+.pac-item-selected:hover {
+  background-color: #eff6ff !important;
+}
+
+.pac-item-query {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+/* Google Maps Error Dialog Suppression */
+.gm-err-container,
+.gm-err-content,
+.dismissButton {
+  display: none !important;
+}

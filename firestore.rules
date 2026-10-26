@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Bus routes and destination schedules (publicly readable by students/parents, writable by district staff)
+    match /bus_routes/{routeId} {
+      allow read: if true;
+      allow write: if true;
+    }
+    
+    // Live vehicle positions (GPS positions from Bouncie or simulation, readable by all)
+    match /buses/{busId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
